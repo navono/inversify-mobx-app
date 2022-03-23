@@ -14,6 +14,7 @@ import { observer } from "mobx-react";
 import { useInjection } from 'inversify-react';
 import { CommandService } from './services/commands';
 import { UserStore } from "./stores/User.store";
+import { TopComponent } from './Top';
 
 export const App: React.FC = observer(() => {
   const [localStore] = useState(() => new UserStore());
@@ -204,6 +205,7 @@ export const App: React.FC = observer(() => {
           </Grid>
         </Grid.Column>
       </Grid>
+      <TopComponent />
 
       <Divider vertical={true}>Demo</Divider>
     </Segment>
