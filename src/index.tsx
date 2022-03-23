@@ -1,9 +1,12 @@
+import 'reflect-metadata';
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from 'inversify-react';
 import { App } from "./App";
 import { Container, Divider, Header, List } from "semantic-ui-react";
 import { configure } from "mobx";
 import { configurePersistable } from "mobx-persist-store";
+import { container } from './ioc';
 
 // https://mobx.js.org/configuration.html#configuration-
 configure({
@@ -24,20 +27,22 @@ styleLink.href =
 document.head.appendChild(styleLink);
 
 ReactDOM.render(
-  <Container style={{ margin: 20 }}>
-    <Header as="h1" dividing>
-      Mobx Persist Store with MobX 6 (v1.0)
-    </Header>
-    <List bulleted>
-      <List.Item
-        as="a"
-        content="Official Documentation"
-        href="https://github.com/quarrant/mobx-persist-store"
-        target="_blank"
-      />
-    </List>
-    <Divider hidden />
-    <App />
-  </Container>,
+  <Provider container={container}>
+    <Container style={{ margin: 20 }}>
+      <Header as="h1" dividing>
+        Mobx Persist Store with MobX 6 (v1.0)
+      </Header>
+      <List bulleted>
+        <List.Item
+          as="a"
+          content="Official Documentation"
+          href="https://github.com/quarrant/mobx-persist-store"
+          target="_blank"
+        />
+      </List>
+      <Divider hidden />
+      <App />
+    </Container>
+  </Provider>,
   document.getElementById("root")
 );

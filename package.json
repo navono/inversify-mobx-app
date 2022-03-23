@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@lumino/commands": "^1.20.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -12,12 +13,15 @@
     "@types/react-dom": "^17.0.14",
     "axios": "^0.26.1",
     "babel-plugin-transform-semantic-ui-react-imports": "^1.4.1",
+    "inversify": "^6.0.1",
+    "inversify-react": "^1.0.1",
     "mobx": "^6.5.0",
     "mobx-persist-store": "^1.0.6",
     "mobx-react": "^7.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
+    "reflect-metadata": "^0.1.13",
     "semantic-ui-react": "^2.1.2",
     "typescript": "^4.6.2",
     "web-vitals": "^2.1.4"

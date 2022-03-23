@@ -11,12 +11,18 @@ import {
   Segment
 } from "semantic-ui-react";
 import { observer } from "mobx-react";
+import { useInjection } from 'inversify-react';
+import { CommandService } from './services/commands';
 import { UserStore } from "./stores/User.store";
 
 export const App: React.FC = observer(() => {
   const [localStore] = useState(() => new UserStore());
+  const cmd = useInjection(CommandService);
 
   useEffect(() => {
+    cmd.addCommand('test.cmd', {
+      execute: () => console.log('execute test commnad')
+    });
     return () => localStore.disposePersist();
   }, [localStore]);
 
@@ -150,14 +156,14 @@ export const App: React.FC = observer(() => {
                 content="Pause Store Persist"
                 color="orange"
                 icon="pause"
-                onClick={localStore.pausePersist}
+                onClick={() => { cmd.execute('test.cmd'); localStore.pausePersist(); }}
               />
               <Button
                 attached="top"
                 content="Restart Store Persist"
                 color="orange"
                 icon="play"
-                onClick={localStore.startPersist}
+                onClick={() => { console.log(cmd.listCommands()); localStore.startPersist();}}
               />
               <Button
                 attached="top"
